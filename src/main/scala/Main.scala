@@ -16,7 +16,7 @@ object Main extends App {
   case class Character(name: String, gender: String, height: String, mass: String)
 
   class Cache[K, V] {
-    private final val underlyingCache = new java.util.concurrent.ConcurrentHashMap[K, Promise[V]]() // TODO use a prodcution-ready cache like caffeine
+    private final val underlyingCache = new java.util.concurrent.ConcurrentHashMap[K, Promise[V]]() // TODO use a production-ready cache like caffeine
     def get(key: K, fetchOrCache: => Future[V]): Future[V] = {
       underlyingCache.get(key) match {
         case null =>
